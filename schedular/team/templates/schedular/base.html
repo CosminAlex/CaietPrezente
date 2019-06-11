@@ -1,0 +1,38 @@
+{% load staticfiles i18n %}
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>5 O'Clock team </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <link rel="stylesheet" href="{% static 'css/components/navbar.css' %}">
+        <link rel="stylesheet" href="{% static 'css/components/footer.css' %}">
+        <link rel="stylesheet" href="{% static 'css/components/page.css' %}">
+        <link rel="stylesheet" href="{% static 'css/components/forms.css' %}">
+        <link rel="stylesheet" href="{% static 'css/login.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.confirm.css' %}" />
+
+    </head>
+
+    <body>
+        <nav class="navbar navbar-inverse">
+            <a class="navbar-brand" href="http://127.0.0.1:8000">Caiet de prezente</a>
+            <div class="col-md-12">
+                <div class="navbar-logo"></div>
+            </div>
+
+        </nav>
+        <div class="team-content">
+            {% block main_content %} {% endblock %}
+        </div>
+
+        <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
+    </body>
+
+</html>

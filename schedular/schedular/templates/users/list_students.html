@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% load staticfiles i18n %}
+{% block body-class %}{% endblock %}
+
+{% block container %}
+<div class="main-page">
+    <div class="table-responsive">
+      <table class="table table-condensed">
+        <tr>
+          <th>Nume</th>
+          <th>Prenume</th>
+          <th>Grupa</th>
+          <th>Total absente</th>
+          <th>Total prezente</th>
+          <th>Anulare bursa</th>
+        </tr>
+          <tr class="anulareBursa">
+            <td>Bolohan</td>
+            <td>Cosmin</td>
+            <td>3171</td>
+            <td>67</td>
+            <td>22</td>
+            <td class="bursaValue">DA</td>
+          </tr>
+            <tr class="anulareBursa">
+            <td>Maria</td>
+            <td>Belciug</td>
+            <td>3171</td>
+            <td>55</td>
+            <td>12</td>
+            <td class="bursaValue">DA</td>
+          </tr>
+            <tr class="anulareBursa">
+            <td>Sebastian</td>
+            <td>Macarescu</td>
+            <td>3712</td>
+            <td>12</td>
+            <td>21</td>
+            <td class="bursaValue">NU</td>
+          </tr>
+            <tr class="anulareBursa">
+            <td>Ion</td>
+            <td>Moldovan</td>
+            <td>3172</td>
+            <td>12</td>
+            <td>0</td>
+            <td class="bursaValue">NU</td>
+          </tr>
+             </tr>
+            <tr class="anulareBursa">
+            <td>Costel</td>
+            <td>Ion</td>
+            <td>3172</td>
+            <td>123</td>
+            <td>12</td>
+            <td class="bursaValue">DA</td>
+          </tr>
+            <tr class="anulareBursa">
+            <td>Manolache</td>
+            <td>Andrei</td>
+            <td>3172</td>
+            <td>21</td>
+            <td>2</td>
+            <td class="bursaValue">NU</td>
+          </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<script>
+	window.onload = function(){
+
+		  //Get elements for class: one_level
+		  var classOneSet = document.getElementsByClassName("anulareBursa");
+		  var yesNoValue = document.getElementsByClassName("bursaValue");
+		  var bursaValueLength = yesNoValue.length;
+		  console.log(bursaValueLength);
+
+		  //Change appearance
+		  var i;
+		  for ( i = bursaValueLength - 1; i >= 0; i--){
+		  	 var x = document.getElementsByClassName("bursaValue")[i].textContent;
+			if (x == "DA") {
+				classOneSet.item(i).className = "alert alert-danger"
+			} else {
+				classOneSet.item(i).className = "alert alert-success"
+			}
+		  }
+
+	};
+    function goFurther(){
+if (document.getElementById("chkAgree").checked == true)
+document.getElementById("btnSubmit").disabled = false;
+else
+document.getElementById("btnSubmit").disabled = true;
+}
+    function goFurther1(){
+if (document.getElementById("chkAgree1").checked == true)
+document.getElementById("btnSubmit1").disabled = false;
+else
+document.getElementById("btnSubmit1").disabled = true;
+}
+    function myFunctionValidate() {
+  var x, text;
+  // Get the value of the input field with id="numb"
+  x = document.getElementById("numb").value;
+  if (isNaN(x) || x ==2019) {
+    text = "Codul este valid. Situatia a fost salvata!";
+  } else {
+      text = "Codul este invalid!";
+  }
+  document.getElementById("demo").innerHTML = text;
+}
+ function myFunctionValidate1() {
+  var x, text;
+  // Get the value of the input field with id="numb"
+  x = document.getElementById("numb1").value;
+  if (isNaN(x) || x ==2019) {
+   text = "Codul este valid. Situatia a fost salvata!";
+  } else {
+      text = "Codul este invalid!";
+  }
+  document.getElementById("demo1").innerHTML = text;
+}
+    function totalCheckBoxes() {
+        // document.getElementById("demo1Students").style.display = "block";
+        let totalCheckBoxNumber = (document.querySelectorAll('input[type="checkbox"]:checked').length);
+                console.log(totalCheckBoxNumber);
+        document.getElementById("totalCheckBoxNumber").innerHTML = totalCheckBoxNumber;
+        return totalCheckBoxNumber;
+    }
+        function totalCheckBoxes1() {
+        // document.getElementById("demo2Students").style.display = "block";
+        let totalCheckBoxNumber = (document.querySelectorAll('input[type="checkbox"]:checked').length);
+                console.log(totalCheckBoxNumber);
+        document.getElementById("totalCheckBoxNumber1").innerHTML = totalCheckBoxNumber;
+        return totalCheckBoxNumber;
+    }
+    function myFunction() {
+      var x = document.getElementById("mySelect").value;
+      if (x == "3711") {
+        document.getElementById("demo1Students").style.display = "block";
+      } else {
+        document.getElementById("demo1Students").style.display = "none";
+      }
+      if (x == "3712"){
+        document.getElementById("demo2Students").style.display = "block";
+      } else {
+        document.getElementById("demo2Students").style.display= "none";
+      }
+    }
+</script>
+<style>
+    #demo1Students {
+        width: 420px;
+    }
+    .table>thead>tr>th {
+        text-align: center;
+    }
+    #demo1Students td {
+        text-align: center;
+    }
+</style>
+{% endblock container %}
+

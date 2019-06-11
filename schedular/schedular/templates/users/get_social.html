@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load i18n bootstrap %}
+{% block body-class %}{% endblock body-class %}
+{% block container %}
+
+<div class="main-page table-big">
+    <div class="table-responsive">
+      <h3>Lista conturi personal social</h3>
+      <table class="table table-condensed table-striped">
+        <tr>
+          <th>First name</th>
+          <th>Last name</th> 
+          <th>Personal Email</th>
+          <th>Address</th>
+          <th>Phone Number</th>
+          <th>Edit</th>
+        </tr>
+        {% for social in socials%}
+          <tr>
+            <td>{{social.first_name}}</td>
+            <td>{{social.last_name}}</td>
+            <td>{{social.email}}</td>
+            <td>{{social.address}}</td>
+            <td>{{social.phone_number}}</td>
+           
+            <td><a href="{% url 'users:edit-user' social.pk %}">Edit</a></td>
+
+          </tr>
+        {% empty %}
+          <tr><td colspan="5">{% trans 'No students' %}</td></tr>
+        {% endfor %}
+      </table>
+    </div>  
+  </div>
+{% endblock container %}

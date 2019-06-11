@@ -1,0 +1,276 @@
+{% extends "base.html" %} {% load staticfiles i18n %} {% block body-class %}{% endblock %} {% block container %}
+<div class="row">
+  <div class="col-md-4 col-sm-4 col-xs-12">
+    <div class="sidebar">
+      <a class="btn btn-default sidebar-option" href="{% url 'users:edit-user' request.user.pk %}">Edit my personal data</a>
+    </div>
+  </div>
+  <div class="col-md-8 col-sm-4 col-xs-12">
+    <div class="main-page">
+      <p>{% trans 'First name' %}:
+        <span class="text-muted">{{student.first_name}}</span>
+      </p>
+      <p>{% trans 'Last name' %}:
+        <span class="text-muted">{{student.last_name}}</span>
+      </p>
+      <p>{% trans 'CNP' %}:
+        <span class="text-muted">{{student.CNP}}</span>
+      </p>
+      <p>{% trans 'E-mail address' %}:
+        <span class="text-muted">{{student.email}}</span>
+      </p>
+      <p>{% trans 'Address' %}:
+        <span class="text-muted">{{student.address}}</span>
+      </p>
+      <p>{% trans 'Phone number' %}:
+        <span class="text-muted">{{student.phone_number}}</span>
+      </p>
+    </div>
+  </div>
+</div>
+<div class="main-page">
+	<select id="mySelect" onchange="myFunction()" placeholder="sasd">
+		<option value="" disabled selected>Choose a Group!</option>
+		<option value="3711">3711</option>
+		<option value="3712">3712</option>
+		<option value="3713">3713</option>
+		<option value="3714">3714</option>
+	</select>
+	<div id="demo1" style="display: none;">
+		<div class="bs-example" data-example-id="panel-without-body-with-table">
+			<div class="panel panel-default">
+				<div class="panel-heading">Panel heading</div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Luni</th>
+							<th>Marti</th>
+							<th>Miercuri</th>
+							<th>Joi</th>
+							<th>Vineri</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">08:00 - 10:00</th>
+							<td>
+								<button class="btn btn-success" onclick="studentTable()">TW+ISA</button>
+							</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td><button class="btn btn-default">ISA</button></td>
+						</tr>
+						<tr>
+							<th scope="row">10:00 - 12:00</th>
+							<td></td>
+							<td><button class="btn btn-default">INOC</button></td>
+							<td></td>
+							<td><button class="btn btn-default">InvAutom</button></td>
+							<td></td>
+						</tr>
+						<tr>
+							<th scope="row">12:00 - 14:00</th>
+							<td></td>
+							<td></td>
+							<td><button class="btn btn-default">TWAAOS</button></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<th scope="row">14:00 - 16:00</th>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td><button class="btn btn-default">DC</button></td>
+						</tr>
+						<tr>
+							<th scope="row">16:00 - 18:00</th>
+							<td><button class="btn btn-default">DDDDS</button></td>
+							<td></td>
+							<td></td>
+							<td><button class="btn btn-default">ISA</button></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div id="demo2" style="display: none;">
+		<div class="bs-example" data-example-id="panel-without-body-with-table">
+			<div class="panel panel-default">
+				<div class="panel-heading">Orar</div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Luni</th>
+							<th>Marti</th>
+							<th>Miercuri</th>
+							<th>Joi</th>
+							<th>Vineri</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">08:00 - 10:00</th>
+							<td>
+								<button class="btn btn-default">InvAut</button>
+							</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td><button class="btn btn-default">ISA</button></td>
+						</tr>
+						<tr>
+							<th scope="row">10:00 - 12:00</th>
+							<td></td>
+							<td><button class="btn btn-default">TW</button></td>
+							<td></td>
+							<td><button class="btn btn-default">DC</button></td>
+							<td></td>
+						</tr>
+						<tr>
+							<th scope="row">12:00 - 14:00</th>
+							<td></td>
+							<td></td>
+							<td><button class="btn btn-default">DDDDS</button></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<th scope="row">14:00 - 16:00</th>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td><button class="btn btn-default">IngAvs</button></td>
+						</tr>
+						<tr>
+							<th scope="row">16:00 - 18:00</th>
+							<td><button class="btn btn-default">INOC</button></td>
+							<td></td>
+							<td></td>
+							<td><button class="btn btn-default">BD</button></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div id="demo1Students" style="display: none;">
+		<div class="bs-example" data-example-id="panel-without-body-with-table">
+			<div class="panel panel-default">
+				<div class="panel-heading">Situatie Prezenta Studenti</div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Nume Student</th>
+							<th>Prezent</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">Bolohan Cosmin</th>
+							<td>
+								<input type="checkbox" onchange="totalCheckBoxes()">
+							</td>
+
+						</tr>
+						<tr>
+							<th scope="row">Maria Belciug</th>
+							<td><input type="checkbox" checked onchange="totalCheckBoxes()"></td>
+						</tr>
+						<tr>
+							<th scope="row">Sebastian Hatnean</th>
+							<td><input type="checkbox" onchange="totalCheckBoxes()"></td>
+
+						</tr>
+						<tr>
+							<th scope="row">Vadim Tudor</th>
+							<td><input type="checkbox" onchange="totalCheckBoxes()"></td>
+
+						</tr>
+						<tr>
+							<th scope="row">Pamparau Cristian</th>
+							<td><input type="checkbox" onchange="totalCheckBoxes()"></td>
+						</tr>
+                    	<tr>
+							<th scope="row">Nicolaev Ion</th>
+							<td><input type="checkbox" onchange="totalCheckBoxes()"></td>
+						</tr>
+                    	<tr>
+							<th scope="row">Alexandru Duduman</th>
+							<td><input type="checkbox" onchange="totalCheckBoxes()"></td>
+						</tr>
+                    	<tr>
+							<th scope="row">Ignat Mihai</th>
+							<td><input type="checkbox" onchange="totalCheckBoxes()"></td>
+						</tr>
+                    	<tr>
+							<th scope="row">Vasea Igor</th>
+							<td><input type="checkbox" onchange="totalCheckBoxes()"></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="panel-footer">Total prezente: <span id="totalCheckBoxNumber"></span></div>
+
+               <button type="button" id="btnSubmit" onclick="myFunctionValidate()" >Salvare</button>
+<p id="demo">Apasa Salvare</p>
+
+               <!-- <td><button class="btn btn-default">Salvare</button></td>-->
+			</div>
+		</div>
+	</div>
+
+</div>
+<script>
+
+
+    function myFunctionValidate() {
+
+  document.getElementById("demo").innerHTML = "Salvat";
+}
+
+	function totalCheckBoxes() {
+		// document.getElementById("demo1Students").style.display = "block";
+		let totalCheckBoxNumber = (document.querySelectorAll('input[type="checkbox"]:checked').length);
+				console.log(totalCheckBoxNumber);
+		document.getElementById("totalCheckBoxNumber").innerHTML = totalCheckBoxNumber;
+		return totalCheckBoxNumber;
+	}
+	function myFunction() {
+	  var x = document.getElementById("mySelect").value;
+	  if (x == "3711") {
+		  document.getElementById("demo1").style.display = "block"
+	  } else {
+		document.getElementById("demo1").style.display = "none"
+	  }
+	  if (x == "3712"){
+		document.getElementById("demo2").style.display = "block"
+	  } else {
+		document.getElementById("demo2").style.display = "none"
+	  }
+	}
+
+	function studentTable() {
+		document.getElementById("demo1Students").style.display = "block";
+	}
+</script>
+<style>
+	#demo1Students {
+		width: 420px;
+	}
+	.table>thead>tr>th {
+		text-align: center;
+	}
+	#demo1Students td {
+		text-align: center;
+	}
+</style>
+
+{% endblock container %} Add Comment

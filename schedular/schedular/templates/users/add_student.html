@@ -1,0 +1,245 @@
+{% extends "base.html" %}
+{% load i18n bootstrap %}
+{% block body-class %}{% endblock body-class %}
+{% block container %}
+
+<div class="main-page table-big">
+    <div class="table-responsive">
+
+<div class="main-page">
+	<select id="mySelect" onchange="myFunction()" placeholder="sasd">
+		<option value="" disabled selected>Choose a Group!</option>
+		<option value="3711">3711</option>
+		<option value="3712">3712</option>
+		<option value="3713">3713</option>
+		<option value="3714">3714</option>
+	</select>
+
+
+	<div id="demo1Students" style="display: none;">
+		<div class="bs-example" data-example-id="panel-without-body-with-table">
+			<div class="panel panel-default">
+				<div class="panel-heading">Situatie Prezenta Studenti</div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Nume Student</th>
+							<th>Prezent</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">Bolohan Cosmin</th>
+							<td>
+								<input type="checkbox" checked onchange="totalCheckBoxes()">
+							</td>
+
+						</tr>
+						<tr>
+							<th scope="row">Maria Belciug</th>
+							<td><input type="checkbox" checked onchange="totalCheckBoxes()"></td>
+						</tr>
+						<tr>
+							<th scope="row">Sebastian Hatnean</th>
+							<td><input type="checkbox" onchange="totalCheckBoxes()"></td>
+
+						</tr>
+						<tr>
+							<th scope="row">Vadim Tudor</th>
+							<td><input type="checkbox" onchange="totalCheckBoxes()"></td>
+
+						</tr>
+						<tr>
+							<th scope="row">Pamparau Cristian</th>
+							<td><input type="checkbox"  checked onchange="totalCheckBoxes()"></td>
+						</tr>
+                    	<tr>
+							<th scope="row">Nicolaev Ion</th>
+							<td><input type="checkbox" onchange="totalCheckBoxes()"></td>
+						</tr>
+                    	<tr>
+							<th scope="row">Alexandru Duduman</th>
+							<td><input type="checkbox" onchange="totalCheckBoxes()"></td>
+						</tr>
+                    	<tr>
+							<th scope="row">Ignat Mihai</th>
+							<td><input type="checkbox" onchange="totalCheckBoxes()"></td>
+						</tr>
+                    	<tr>
+							<th scope="row">Vasea Igor</th>
+							<td><input type="checkbox" onchange="totalCheckBoxes()"></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="panel-footer">Total prezente: <span id="totalCheckBoxNumber"></span></div>
+                <label>Cod profesor:</label>
+                  <input id="numb">
+
+
+                        <label>Sunt de acord cu termeni si conditiile!</label>
+                <input type="checkbox" id="chkAgree" onclick="goFurther()">
+               <button type="button" id="btnSubmit" onclick="myFunctionValidate()" >Salvare</button>
+<p id="demo"></p>
+
+               <!-- <td><button class="btn btn-default">Salvare</button></td>-->
+			</div>
+		</div>
+	</div>
+
+
+		<div id="demo2Students" style="display: none;">
+		<div class="bs-example" data-example-id="panel-without-body-with-table">
+			<div class="panel panel-default">
+				<div class="panel-heading">Situatie Prezenta Studenti</div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Nume Student</th>
+							<th>Prezent</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">Popescu Vasile</th>
+							<td>
+								<input type="checkbox" checked onchange="totalCheckBoxes1()">
+							</td>
+
+						</tr>
+						<tr>
+							<th scope="row">Vasile Igor</th>
+							<td><input type="checkbox" checked onchange="totalCheckBoxes1()"></td>
+						</tr>
+						<tr>
+							<th scope="row">Leonte Andrei</th>
+							<td><input type="checkbox" onchange="totalCheckBoxes1()"></td>
+
+						</tr>
+						<tr>
+							<th scope="row">Mihai Mihai</th>
+							<td><input type="checkbox" onchange="totalCheckBoxes1()"></td>
+
+						</tr>
+						<tr>
+							<th scope="row">Dorin Alex</th>
+							<td><input type="checkbox"  checked onchange="totalCheckBoxes1()"></td>
+						</tr>
+                    	<tr>
+							<th scope="row">Stefan Cel Mare</th>
+							<td><input type="checkbox" onchange="totalCheckBoxes1()"></td>
+						</tr>
+                    	<tr>
+							<th scope="row">Vasea Ilescu</th>
+							<td><input type="checkbox" onchange="totalCheckBoxes1()"></td>
+						</tr>
+
+					</tbody>
+				</table>
+				<div class="panel-footer">Total prezente: <span id="totalCheckBoxNumber1"></span></div>
+                <label>Cod profesor:</label>
+                  <input id="numb1">
+
+
+                        <label>Sunt de acord cu termeni si conditiile!</label>
+                <input type="checkbox" id="chkAgree1" onclick="goFurther1()">
+               <button type="button" id="btnSubmit1" onclick="myFunctionValidate1()" >Salvare</button>
+<p id="demo1"></p>
+
+               <!-- <td><button class="btn btn-default">Salvare</button></td>-->
+			</div>
+		</div>
+	</div>
+
+
+</div>
+<script>
+
+    function goFurther(){
+if (document.getElementById("chkAgree").checked == true)
+document.getElementById("btnSubmit").disabled = false;
+else
+document.getElementById("btnSubmit").disabled = true;
+}
+
+    function goFurther1(){
+if (document.getElementById("chkAgree1").checked == true)
+document.getElementById("btnSubmit1").disabled = false;
+else
+document.getElementById("btnSubmit1").disabled = true;
+}
+
+    function myFunctionValidate() {
+  var x, text;
+
+  // Get the value of the input field with id="numb"
+  x = document.getElementById("numb").value;
+
+  if (isNaN(x) || x ==2019) {
+    text = "Codul este valid. Situatia a fost salvata!";
+  } else {
+      text = "Codul este invalid!";
+  }
+  document.getElementById("demo").innerHTML = text;
+}
+
+ function myFunctionValidate1() {
+  var x, text;
+
+  // Get the value of the input field with id="numb"
+  x = document.getElementById("numb1").value;
+
+  if (isNaN(x) || x ==2019) {
+   text = "Codul este valid. Situatia a fost salvata!";
+  } else {
+      text = "Codul este invalid!";
+  }
+  document.getElementById("demo1").innerHTML = text;
+}
+
+	function totalCheckBoxes() {
+		// document.getElementById("demo1Students").style.display = "block";
+		let totalCheckBoxNumber = (document.querySelectorAll('input[type="checkbox"]:checked').length);
+				console.log(totalCheckBoxNumber);
+		document.getElementById("totalCheckBoxNumber").innerHTML = totalCheckBoxNumber;
+		return totalCheckBoxNumber;
+	}
+
+		function totalCheckBoxes1() {
+		// document.getElementById("demo2Students").style.display = "block";
+		let totalCheckBoxNumber = (document.querySelectorAll('input[type="checkbox"]:checked').length);
+				console.log(totalCheckBoxNumber);
+		document.getElementById("totalCheckBoxNumber1").innerHTML = totalCheckBoxNumber;
+		return totalCheckBoxNumber;
+	}
+	function myFunction() {
+	  var x = document.getElementById("mySelect").value;
+	  if (x == "3711") {
+	  	document.getElementById("demo1Students").style.display = "block";
+	  } else {
+	  	document.getElementById("demo1Students").style.display = "none";
+	  }
+	  if (x == "3712"){
+		document.getElementById("demo2Students").style.display = "block";
+	  } else {
+		document.getElementById("demo2Students").style.display= "none";
+	  }
+	}
+
+
+</script>
+<style>
+	#demo1Students {
+		width: 420px;
+	}
+	.table>thead>tr>th {
+		text-align: center;
+	}
+	#demo1Students td {
+		text-align: center;
+	}
+</style>
+{% endblock container %}
+    </div>
+  </div>
+
+
